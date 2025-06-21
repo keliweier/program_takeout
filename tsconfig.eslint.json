@@ -1,0 +1,15 @@
+// tsconfig.eslint.json
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "vue.config.js",  // 包含配置文件
+    "jest.config.js", // 其他 JS 配置文件
+    ".eslintrc.js",      // 新增：包含 ESLint 配置文件
+    "*.js"            // 包含根目录下的所有 JS 文件
+  ]
+}
