@@ -1,0 +1,81 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/take_out
+      username: root
+      password: wsy555888@SQL
+  redis:
+    host: localhost
+    port: 6379
+    database: 10
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+
+
+
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.entity
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      sky:
+        mapper: debug
+        service: info
+        controller: info
+
+sky:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: Yilena
+    # 设置jwt过期时间
+    admin-ttl: 720000000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    user-token-name: authentication
+    user-secret-key: Wusiyu
+    user-ttl: 720000000
+
+  aliyun:
+    oss:
+      endpoint: oss-cn-hangzhou.aliyuncs.com
+      bucketName: w-l-takeout
+      access-key-id: LTAI5t95f2Uuyx5iCsYqk7xz
+      access-key-secret: G2FAt7BuxpvO97cXS79wLvk3N4dGNa
+      region: cn-hangzhou
+#
+  wechat:
+    appid: wxe3b7a1278f9f1def
+    secret: a73babf1bbb36484832e2496cff08d10
+#    mchid: ${sky.wechat.mchid}
+#    mchSerialNo: ${sky.wechat.mchSerialNo}
+#    privateKeyFilePath: ${sky.wechat.privateKeyFilePath}
+#    apiV3Key: ${sky.wechat.apiV3Key}
+#    weChatPayCertFilePath: ${sky.wechat.weChatPayCertFilePath}
+#    notifyUrl: ${sky.wechat.notifyUrl}
+#    refundNotifyUrl: ${sky.wechat.refundNotifyUrl}
+
+
+
+takeout:
+  file:
+    upload-dir: D:\upload\takeout\image
+    download-dir: /api/admin/common/download

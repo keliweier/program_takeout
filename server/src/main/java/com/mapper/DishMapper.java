@@ -1,0 +1,37 @@
+package com.mapper;
+
+import com.annotation.AutoFill;
+import com.dto.DishPageQueryDTO;
+import com.entity.Dish;
+import com.enumeration.OperationType;
+import com.vo.DishVO;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+import java.util.Map;
+
+@Mapper
+public interface DishMapper {
+
+    List<DishVO> findAllByPage(DishPageQueryDTO dishPageQueryDTO);
+
+    @AutoFill(value = OperationType.INSERT)
+    void saveDish(Dish dish);
+
+    Dish findById(Long i);
+
+    List<Long> findByCategoryId(Long id);
+
+    @Delete("DELETE from dish where id = #{id}")
+    void deleteDish(Long id);
+
+    @AutoFill(value = OperationType.UPDATE)
+    void updateDish(Dish dish);
+
+    List<DishVO> findByCategoryIdToProject(Long categoryId);
+
+    List<DishVO> findByCategoryIdToList(Dish dish);
+
+    Integer countByMap(Map map);
+}
